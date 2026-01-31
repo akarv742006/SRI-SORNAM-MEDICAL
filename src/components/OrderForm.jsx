@@ -117,13 +117,12 @@ const OrderForm = ({ prefilledItems }) => {
                         </div>
 
                         <div className="form-group">
-                            <label>Delivery Address</label>
+                            <label>Delivery Address (Optional)</label>
                             <textarea
                                 name="address"
                                 value={formData.address}
                                 onChange={handleChange}
-                                required
-                                placeholder="Full Address with Landmark"
+                                placeholder="Full Address with Landmark (or use location button)"
                             ></textarea>
                             <button
                                 type="button"
