@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './OrderForm.css';
 
-const OrderForm = () => {
+const OrderForm = ({ prefilledItems }) => {
     // Placeholder - Replace with actual number
     const phoneNumber = "917708897598";
 
@@ -11,6 +11,16 @@ const OrderForm = () => {
         address: '',
         medicines: ''
     });
+
+    React.useEffect(() => {
+        if (prefilledItems && prefilledItems.length > 0) {
+            const list = prefilledItems.map(item => `• ${item}`).join('\n');
+            setFormData(prev => ({
+                ...prev,
+                medicines: list
+            }));
+        }
+    }, [prefilledItems]);
 
     const handleChange = (e) => {
         setFormData({

@@ -406,5 +406,5 @@ export const medicines = [
 
 export const getCategories = () => {
     const categories = new Set(medicines.map(m => m.category));
-    return ["All", ...Array.from(categories)];
+    return Array.from(categories);
 };

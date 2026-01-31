@@ -9,16 +9,39 @@ import Footer from './components/Footer';
 import FloatingCallButton from './components/FloatingCallButton';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [cartItems, setCartItems] = React.useState([]);
+
+  const handleAddToCart = (item) => {
+    if (!cartItems.includes(item)) {
+      setCartItems([...cartItems, item]);
+    }
+  };
+
+  const handleRemoveFromCart = (item) => {
+    setCartItems(cartItems.filter((i) => i !== item));
+  };
+
+  const toggleCartItem = (item) => {
+    if (cartItems.includes(item)) {
+      handleRemoveFromCart(item);
+    } else {
+      handleAddToCart(item);
+    }
+  };
+
   return (
     <div className="App">
       <Navbar />
       <Hero />
       <Services />
       <WhyChooseUs />
-      <Products />
+      <Products
+        selectedItems={cartItems}
+        toggleSelection={toggleCartItem}
+      />
       <div id="contact">
-        <OrderForm />
+        <OrderForm prefilledItems={cartItems} />
       </div>
       <Footer />
       <FloatingCallButton />
