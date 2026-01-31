@@ -22,8 +22,11 @@ const OrderForm = ({ prefilledItems }) => {
         }
     }, [prefilledItems]);
 
+    const [isLocating, setIsLocating] = useState(false);
+
     const handleLocationClick = () => {
         if (navigator.geolocation) {
+            setIsLocating(true);
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
@@ -32,8 +35,10 @@ const OrderForm = ({ prefilledItems }) => {
                         ...prev,
                         address: `${prev.address ? prev.address + '\n' : ''}Google Maps Location: ${mapsLink}`
                     }));
+                    setIsLocating(false);
                 },
                 (error) => {
+                    setIsLocating(false);
                     let errorMessage = "Unable to fetch location.";
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
@@ -124,8 +129,9 @@ const OrderForm = ({ prefilledItems }) => {
                                 type="button"
                                 className="location-btn"
                                 onClick={handleLocationClick}
+                                disabled={isLocating}
                             >
-                                📍 Use My Current Location
+                                {isLocating ? '⏳ Fetching Location...' : '📍 Use My Current Location'}
                             </button>
                         </div>
 
