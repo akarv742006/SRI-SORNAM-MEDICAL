@@ -22,6 +22,47 @@ const OrderForm = ({ prefilledItems }) => {
         }
     }, [prefilledItems]);
 
+    const handleLocationClick = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                    setFormData(prev => ({
+                        ...prev,
+                        address: `${prev.address ? prev.address + '\n' : ''}Google Maps Location: ${mapsLink}`
+                    }));
+                },
+                (error) => {
+                    let errorMessage = "Unable to fetch location.";
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = "Location permission denied. Please allow access in browser settings.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = "The request to get user location timed out.";
+                            break;
+                        default:
+                            errorMessage = "An unknown error occurred.";
+                            break;
+                    }
+                    alert(errorMessage);
+                    console.error("Error fetching location:", error);
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by your browser.");
+        }
+    };
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -79,6 +120,13 @@ const OrderForm = ({ prefilledItems }) => {
                                 required
                                 placeholder="Full Address with Landmark"
                             ></textarea>
+                            <button
+                                type="button"
+                                className="location-btn"
+                                onClick={handleLocationClick}
+                            >
+                                📍 Use My Current Location
+                            </button>
                         </div>
 
                         <div className="form-group">

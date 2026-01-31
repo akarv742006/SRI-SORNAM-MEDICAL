@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
                     <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
                     <a href="#services" onClick={() => setIsOpen(false)}>Services</a>
-                    <a href="#contact" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <a href="#contact" onClick={() => setIsOpen(false)}>
                         <PhoneIcon size={18} />
                         Contact
                     </a>
