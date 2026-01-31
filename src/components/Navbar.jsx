@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="container navbar-container">
                 <a href="#" className="navbar-logo">
-                    <img src="/logo.svg" alt="Sri Sornam Medical Logo" className="logo-img" />
+                    <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Sri Sornam Medical Logo" className="logo-img" />
                     <span>SRI SORNAM MEDICAL</span>
                 </a>
                 <div className={`navbar-links ${isOpen ? 'active' : ''}`}>

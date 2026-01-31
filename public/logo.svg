@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <circle cx="50" cy="50" r="45" fill="#e0f7fa" stroke="#0077b6" stroke-width="2"/>
-  <path d="M50 25V75M25 50H75" stroke="#0077b6" stroke-width="12" stroke-linecap="round"/>
-  <path d="M50 25V75M25 50H75" stroke="white" stroke-width="4" stroke-linecap="round"/>
-  <path d="M50 35C50 35 35 30 35 45C35 55 50 65 50 65C50 65 65 55 65 45C65 30 50 35 50 35Z" fill="#ff4d4d" opacity="0.8"/>
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0077b6" />
+      <stop offset="100%" stop-color="#00b4d8" />
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#blueGrad)" />
+  <path d="M50 20V80M20 50H80" stroke="white" stroke-width="14" stroke-linecap="round" />
 </svg>
