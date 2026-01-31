@@ -1,0 +1,84 @@
+.order-form-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+}
+
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+    margin-top: -30px;
+    /* Pull closer to title */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.submit-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 15px;
+    background-color: #25D366;
+    /* WhatsApp Green */
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #128C7E;
+}
+
+@media (max-width: 768px) {
+    .order-form-section {
+        padding: 40px 0;
+    }
+
+    .form-wrapper {
+        padding: 20px;
+        margin: 0 10px;
+    }
+
+    .form-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+        /* Prevents iOS zoom */
+        padding: 10px;
+    }
+}
